@@ -1,10 +1,14 @@
-.item {
-  height: 35px;
-  //width: 400px;
-  border: 1px solid black;
-  margin: 0 auto;
+.wrapper_tree_first{
+  ::ng-deep .item{
+    background-color: gray;
+    font-style: italic;
+  }
+}
 
-  .item__name{
-    text-align: center;
+.wrapper_tree_second{
+  ::ng-deep .item{
+    background-color: yellow;
+    font-weight: bold;
+    color: #fff;
   }
 }
