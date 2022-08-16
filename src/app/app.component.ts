@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TreeItem, TreeItems} from "./store/TreeItemStore";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'angular-first-project-innowaise';
+export class AppComponent implements OnInit{
+  items: TreeItem[] = TreeItems;
+
+  ngOnInit(): void {
+
+  }
+
+  calc(currentWidth: string):string {
+    return parseInt(currentWidth)-100+"px";
+  }
+
 }
