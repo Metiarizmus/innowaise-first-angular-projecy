@@ -13,8 +13,5 @@ export class AppComponent implements OnInit{
 
   }
 
-  calc(currentWidth: string):string {
-    return parseInt(currentWidth)-100+"px";
-  }
 
 }

@@ -1,0 +1,20 @@
+.wrapper {
+  height: 100%;
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+
+  .item {
+    height: 35px;
+    border: 1px solid black;
+
+    &__name {
+      text-align: center;
+    }
+  }
+
+  .child {
+    margin-left: auto;
+  }
+
+}
