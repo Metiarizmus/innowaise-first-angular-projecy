@@ -1,1 +1,15 @@
+.wrapper {
+  display: flex;
+  justify-content: space-around;
 
+  .first ::ng-deep .item {
+    background-color: gray;
+    font-style: italic;
+  }
+
+  .second ::ng-deep .item {
+    background-color: yellow;
+    font-weight: bold;
+    color: #fff;
+  }
+}

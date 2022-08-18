@@ -6,13 +6,6 @@ import {TreeItem, TreeItems} from "./store/TreeItemStore";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   items: TreeItem[] = TreeItems;
-
-  ngOnInit(): void {
-
-  }
-
-
-
 }

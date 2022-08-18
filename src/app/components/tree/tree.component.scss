@@ -10,12 +10,14 @@
     border: 1px solid black;
 
     .item__name {
-      text-align: center;
+      &__name {
+        text-align: center;
+      }
     }
-  }
 
-  .child {
-    margin-left: auto;
-  }
+    .child {
+      margin-left: auto;
+    }
 
+  }
 }
