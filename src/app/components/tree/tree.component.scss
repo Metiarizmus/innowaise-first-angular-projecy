@@ -2,6 +2,7 @@
 .wrapper {
   width: 30rem;
   margin: 0 auto;
+  font-size: 1.5rem;
 
   .item {
 
@@ -17,9 +18,9 @@
     }
   }
 
-  :host-context(.first){
-    .item{
-      &__name{
+  :host-context(.first) {
+    .item {
+      &__name {
         background-color: gray;
         font-style: italic;
       }
