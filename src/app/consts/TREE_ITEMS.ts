@@ -1,12 +1,6 @@
+import { TreeItem } from "../interfaces/TreeItem";
 
-export interface TreeItem {
-  id: string;
-  name:string;
-  children: TreeItem[]
-}
-
-
-export const TreeItems: TreeItem[] = [
+export const TREE_ITEMS: TreeItem[] = [
   {
     id: '1',
     name: 'Den',
@@ -61,4 +55,3 @@ export const TreeItems: TreeItem[] = [
     ]
   }
 ];
-

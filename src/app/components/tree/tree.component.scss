@@ -1,11 +1,9 @@
 .wrapper {
-  height: 100%;
-  width: 400px;
-  display: block;
+  width: 30rem;
   margin: 0 auto;
 
   .item {
-    height: 35px;
+    height: 2rem;
     border: 1px solid black;
 
     &__name {
@@ -13,8 +11,20 @@
     }
   }
 
-  .child {
-    margin-left: auto;
-  }
+  position: relative;
 
+  .child{
+    margin-left: 4rem;
+  }
+}
+
+:host(.first .item){
+  background-color: gray;
+  font-style: italic;
+}
+
+:host(.second .item) {
+  background-color: yellow;
+  font-weight: bold;
+  color: #fff;
 }
