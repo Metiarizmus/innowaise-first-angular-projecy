@@ -1,22 +1,40 @@
 
 .wrapper {
-  height: 100%;
-  width: 400px;
-  display: block;
+  width: 30rem;
   margin: 0 auto;
 
   .item {
-    height: 35px;
-    border: 1px solid black;
 
-    .item__name {
-      &__name {
-        text-align: center;
-      }
+    &__name {
+      border: 1px solid black;
+      text-align: center;
     }
 
+    position: relative;
+
     .child {
-      margin-left: auto;
+      margin-left: 4rem;
+    }
+  }
+
+  :host-context(.first){
+    .item{
+      &__name{
+        background-color: gray;
+        font-style: italic;
+      }
+
+    }
+
+  }
+
+  :host-context(.second ) {
+    .item {
+      &__name {
+        background-color: yellow;
+        font-weight: bold;
+        color: #fff;
+      }
     }
 
   }

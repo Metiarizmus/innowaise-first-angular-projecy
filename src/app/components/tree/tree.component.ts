@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TreeItem} from "../../store/TreeItemStore";
+import {Component, Input} from '@angular/core';
+import {TreeItem} from "../../interfaces/TreeItem";
 
 @Component({
   selector: 'app-tree',
@@ -9,9 +9,5 @@ import {TreeItem} from "../../store/TreeItemStore";
 export class TreeComponent {
 
   @Input() tree: TreeItem[] = [];
-
-  calc(currentWidth: string):string {
-    return parseInt(currentWidth)-100+"px";
-  }
 
 }
