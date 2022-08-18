@@ -1,21 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TreeItem} from "../../store/TreeItemStore";
+import {Component, Input} from '@angular/core';
+import {TreeItem} from "../../interfaces/TreeItem";
 
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss']
 })
-export class TreeComponent implements OnInit {
+export class TreeComponent {
 
   @Input() tree: TreeItem[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  calc(currentWidth: string):string {
-    return parseInt(currentWidth)-100+"px";
-  }
 }

@@ -1,15 +1,14 @@
-<ng-template #reverseItems let-width="width" let-items let-node="node">
+<ng-template #reverseItems let-items>
   <li *ngFor="let item of items">
-    <div class="item" [ngStyle]="{'width':width}" [ngClass]="node">
+    <div class="item">
       <div class="item__name">{{item.name}}</div>
     </div>
-    <ul *ngIf="item.children.length">
-      <ng-container  *ngTemplateOutlet="reverseItems; context: {width:calc(width), $implicit: item.children, node:'child'}"></ng-container>
+    <ul *ngIf="item.children.length" class="child">
+      <ng-container  *ngTemplateOutlet="reverseItems; context: {$implicit: item.children}"></ng-container>
     </ul>
   </li>
-
 </ng-template>
 
 <div class="wrapper">
-  <ng-container *ngTemplateOutlet="reverseItems; context: {width:'400px' ,$implicit: tree, node:'parent'}"></ng-container>
+  <ng-container *ngTemplateOutlet="reverseItems; context: {$implicit: tree}"></ng-container>
 </div>

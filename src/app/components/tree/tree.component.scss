@@ -1,7 +1,6 @@
-
 .wrapper {
   height: 100%;
-  width: 400px;
+  width: 500px;
   display: block;
   margin: 0 auto;
 
@@ -9,13 +8,12 @@
     height: 35px;
     border: 1px solid black;
 
-    .item__name {
+    &__name {
       text-align: center;
     }
   }
 
-  .child {
-    margin-left: auto;
+  .child{
+    padding-left: 60px;
   }
-
 }
