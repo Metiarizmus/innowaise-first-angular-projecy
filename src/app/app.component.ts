@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ITreeItem} from "./interfaces/ITreeItem";
-import {TREE_ITEMS} from "./consts/TREE_ITEMS";
+import {TreeItemInterface} from "./models/tree-item.interface";
+import {TreeItems} from "./constants/tree-items";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {ItemConverterService} from "./services/item-converter.service";
+import {NodeBuilder} from "./services/node-builder.service";
 import {Node} from "./models/node";
 
 @Component({
@@ -12,11 +12,11 @@ import {Node} from "./models/node";
 })
 
 export class AppComponent implements OnInit {
-  items: Node[] = this.cs.convertToClass(TREE_ITEMS);
+  items: Node[] = this.cs.convertItemToNode(TreeItems);
   myform!: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private cs: ItemConverterService) {
+              private cs: NodeBuilder) {
   }
 
   ngOnInit(): void {
@@ -24,15 +24,8 @@ export class AppComponent implements OnInit {
       mychecbox: ''
     })
 
-    const newTree = this.cs.convertToClass(TREE_ITEMS)
-
     this.myform.valueChanges.subscribe(({mychecbox}) => {
-
-      // this.items = newTree.map(x => {
-      //   x.operation(mychecbox)
-      //   return x;
-      // })
-      // console.log(newTree)
+      console.log(mychecbox)
     })
 
 

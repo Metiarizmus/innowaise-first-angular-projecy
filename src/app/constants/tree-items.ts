@@ -1,6 +1,6 @@
-import { ITreeItem } from "../interfaces/ITreeItem";
+import { TreeItemInterface } from "../models/tree-item.interface";
 
-export const TREE_ITEMS: ITreeItem[] = [
+export const TreeItems: TreeItemInterface[] = [
   {
     id: '1',
     name: 'Den',
@@ -11,19 +11,19 @@ export const TREE_ITEMS: ITreeItem[] = [
     name: 'Den2',
     children: [
       {
-        id: '4',
+        id: '3',
         name: 'Den2Child1',
         children: []
       },
       {
-        id: '5',
+        id: '4',
         name: 'Den2Child2',
         children: []
       }
     ]
   },
   {
-    id: '3',
+    id: '5',
     name: 'Den3',
     children: [
       {
@@ -40,11 +40,11 @@ export const TREE_ITEMS: ITreeItem[] = [
             name: 'Den3Child2_1',
             children: [
               {
-                id: '11',
+                id: '9',
                 name: 'Den3Child2_1_1',
                 children: [
                   {
-                    id: '12',
+                    id: '10',
                     name: 'max inner',
                     children: []
                   },
@@ -53,14 +53,14 @@ export const TREE_ITEMS: ITreeItem[] = [
             ]
           },
           {
-            id: '9',
+            id: '11',
             name: 'Den3Child2_2',
             children: []
           }
         ]
       },
       {
-        id: '10',
+        id: '12',
         name: 'Den3Child3',
         children: []
       }

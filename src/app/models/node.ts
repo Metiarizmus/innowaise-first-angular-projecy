@@ -1,6 +1,6 @@
-import {ITreeItem} from "../interfaces/ITreeItem";
+import {TreeItemInterface} from "./tree-item.interface";
 
-export abstract class Node implements ITreeItem {
+export abstract class Node implements TreeItemInterface {
 
   id: string;
   isSelected: boolean = false;
@@ -8,6 +8,8 @@ export abstract class Node implements ITreeItem {
   children: Node[] = [];
 
   parent!: Node | null;
+
+  static listSelectedItems: string[] = [];
 
   constructor(id: string, name: string, isSelected: boolean, children: Node[]) {
     this.id = id;
@@ -24,7 +26,16 @@ export abstract class Node implements ITreeItem {
     this.isSelected = isSelected;
   }
 
-  public checkChildrenSelected(): void {}
+  public checkChildrenSelected(): void {
+  }
 
   public abstract operation(isSelected: boolean): void;
+
+  addSelectedItemsToList(isSelected: boolean, id: string): void {
+    if (isSelected) {
+      Node.listSelectedItems.push(id);
+    } else {
+      Node.listSelectedItems = Node.listSelectedItems.filter(x => x !== id);
+    }
+  }
 }
