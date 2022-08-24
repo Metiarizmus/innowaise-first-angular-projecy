@@ -12,15 +12,15 @@ import {Node} from "./models/node";
 })
 
 export class AppComponent implements OnInit {
-  items: Node[] = this.cs.convertItemToNode(TreeItems);
+  items: Node[] = this.nodeBuilder.convertItemToNode(TreeItems);
   myform!: FormGroup;
 
-  constructor(private fb: FormBuilder,
-              private cs: NodeBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private nodeBuilder: NodeBuilder) {
   }
 
   ngOnInit(): void {
-    this.myform = this.fb.group({
+    this.myform = this.formBuilder.group({
       mychecbox: ''
     })
 
