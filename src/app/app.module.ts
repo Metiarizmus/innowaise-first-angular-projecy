@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 
 import { TreeComponent } from './components/tree/tree.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ColorDirective } from './directives/color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TreeComponent,
+    ColorDirective,
   ],
   imports: [
     BrowserModule,

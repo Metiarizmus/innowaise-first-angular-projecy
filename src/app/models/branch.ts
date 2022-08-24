@@ -18,7 +18,6 @@ export class Branch extends Node {
 
   override checkChildrenSelected(): void {
     const isSelected = this.children.every((child: Node) => child.isSelected);
-    console.log(isSelected + " " + this.id)
     if (this.isSelected === isSelected) {
       return;
     }

@@ -3,7 +3,21 @@
 <!--  <app-tree [tree]="items" class="second"></app-tree>-->
 <!--</div>-->
 
-<form [formGroup]="myform">
-  <app-tree [tree]="items" formControlName="mychecbox"></app-tree>
-</form>
+<div class="wrapper">
+
+  <div class="header">
+    <input type="text" class="header__search" (keyup)="onKey($event)">
+  </div>
+
+  <div class="main">
+    <main class="main__content">
+      <form [formGroup]="myform">
+        <app-tree [tree]="items" formControlName="mychecbox" [inputValue]="inputValue"></app-tree>
+      </form>
+    </main>
+  </div>
+
+</div>
+
+
 

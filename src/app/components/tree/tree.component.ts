@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, DoCheck, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {Node} from "../../models/node";
 
@@ -12,12 +12,23 @@ import {Node} from "../../models/node";
     multi: true,
   }],
 })
-export class TreeComponent implements ControlValueAccessor {
+export class TreeComponent implements ControlValueAccessor, AfterViewChecked {
 
   @Input() tree: Node[] = [];
+  @Input() inputValue!: string;
+  isDisabled: boolean = false;
+  listDisabledItems: string[] = [];
 
   onChange2!: Function;
   onTouch!: Function;
+
+  constructor(private cdRef: ChangeDetectorRef) {
+  }
+
+
+  ngAfterViewChecked() {
+    this.cdRef.detectChanges();
+  }
 
   writeValue() {
   }
@@ -35,5 +46,9 @@ export class TreeComponent implements ControlValueAccessor {
     this.onChange2(new Set<string>(Node.listSelectedItems))
   }
 
+  getDisabledItems(id: string) {
+    this.listDisabledItems.push(id);
+    console.log(this.listDisabledItems)
+  }
 
 }

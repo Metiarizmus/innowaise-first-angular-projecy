@@ -1,15 +1,18 @@
 <ng-template #reverseItems let-items>
   <ul>
     <li *ngFor="let item of items" class="item">
-      <div>
-        <div class="item__name">
-          <input
-            type="checkbox"
-            [checked]="item.isSelected"
-            (change)="select(item)"
-          >
-          {{item.name}}
-        </div>
+      <div class="item__name"
+           [disabled]="inputValue"
+           [attr.data-value]="item.id"
+           (emitDisabledItems)="getDisabledItems($event)"
+      >
+        <input
+          type="checkbox"
+          [checked]="item.isSelected"
+          (change)="select(item)"
+          [attr.disabled]="listDisabledItems.includes(item.id) ? true : null"
+        >
+        {{item.name}}
       </div>
       <ul *ngIf="item.children.length" class="child">
         <ng-container *ngTemplateOutlet="reverseItems; context: {$implicit: item.children}"></ng-container>

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {TreeItemInterface} from "./models/tree-item.interface";
 import {TreeItems} from "./constants/tree-items";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NodeBuilder} from "./services/node-builder.service";
@@ -15,6 +14,8 @@ export class AppComponent implements OnInit {
   items: Node[] = this.cs.convertItemToNode(TreeItems);
   myform!: FormGroup;
 
+  inputValue!: string;
+
   constructor(private fb: FormBuilder,
               private cs: NodeBuilder) {
   }
@@ -25,10 +26,14 @@ export class AppComponent implements OnInit {
     })
 
     this.myform.valueChanges.subscribe(({mychecbox}) => {
-      console.log(mychecbox)
+      //console.log(mychecbox)
     })
-
-
   }
+
+  onKey(event: Event) {
+    // @ts-ignore
+    this.inputValue = event.target.value;
+  }
+
 
 }
