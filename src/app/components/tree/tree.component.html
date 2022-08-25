@@ -13,7 +13,7 @@
           (change)="select(item)"
           [disabled]="search.checkSelected()"
         >
-        {{item.name}}
+        {{item.name | defaultValue}}
       </div>
       <ul *ngIf="item.children.length" class="child">
         <ng-container *ngTemplateOutlet="reverseItems; context: {$implicit: item.children}"></ng-container>

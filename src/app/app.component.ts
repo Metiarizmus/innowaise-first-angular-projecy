@@ -1,8 +1,8 @@
 import {AfterContentChecked, Component, OnDestroy, OnInit} from '@angular/core';
-import {TreeItems} from "./constants/tree-items";
+import {TreeItems} from "./shared/constants/tree-items";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NodeBuilder} from "./services/node-builder.service";
-import {Node} from "./models/node";
+import {Node} from "./shared/models/node";
 import {Subscription} from "rxjs";
 
 @Component({

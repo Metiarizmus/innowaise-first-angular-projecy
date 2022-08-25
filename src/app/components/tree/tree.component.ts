@@ -1,6 +1,6 @@
 import {AfterViewChecked, ChangeDetectorRef, Component, DoCheck, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {Node} from "../../models/node";
+import {Node} from "../../shared/models/node";
 
 @Component({
   selector: 'app-tree',

@@ -12,7 +12,7 @@ export const TreeItems: TreeItemInterface[] = [
     children: [
       {
         id: '3',
-        name: 'Den2Child1',
+        name: '',
         children: []
       },
       {

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {TreeItemInterface} from "../models/tree-item.interface";
-import {Branch} from "../models/branch";
-import {Node} from "../models/node"
-import {Leaf} from "../models/leaf";
+import {TreeItemInterface} from "../shared/models/tree-item.interface";
+import {Branch} from "../shared/models/branch";
+import {Node} from "../shared/models/node"
+import {Leaf} from "../shared/models/leaf";
 
 @Injectable({
   providedIn: 'root'
