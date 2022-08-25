@@ -17,7 +17,6 @@ export class TreeComponent implements ControlValueAccessor, AfterViewChecked {
   @Input() tree: Node[] = [];
   @Input() inputValue!: string;
   isDisabled: boolean = false;
-  listDisabledItems: string[] = [];
 
   onChange2!: Function;
   onTouch!: Function;
@@ -43,12 +42,7 @@ export class TreeComponent implements ControlValueAccessor, AfterViewChecked {
 
   select(item: Node): void {
     item.operation(!item.isSelected)
-    this.onChange2(new Set<string>(Node.listSelectedItems))
-  }
-
-  getDisabledItems(id: string) {
-    this.listDisabledItems.push(id);
-    console.log(this.listDisabledItems)
+    this.onChange2(Node.listSelectedItems)
   }
 
 }

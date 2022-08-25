@@ -2,15 +2,16 @@
   <ul>
     <li *ngFor="let item of items" class="item">
       <div class="item__name"
-           [disabled]="inputValue"
+           [search]="inputValue"
+           [itemId]="item.id"
            [attr.data-value]="item.id"
-           (emitDisabledItems)="getDisabledItems($event)"
+           #search='search'
       >
         <input
           type="checkbox"
           [checked]="item.isSelected"
           (change)="select(item)"
-          [attr.disabled]="listDisabledItems.includes(item.id) ? true : null"
+          [disabled]="search.checkSelected()"
         >
         {{item.name}}
       </div>

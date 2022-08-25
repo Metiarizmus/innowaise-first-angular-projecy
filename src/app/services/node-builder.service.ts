@@ -15,7 +15,7 @@ export class NodeBuilder {
         const children = this.convertItemToNode(treeItem.children);
         return new Branch(treeItem.id, treeItem.name, treeItem.isSelected!, children);
       }
-      return new Leaf(treeItem.id, treeItem.name, treeItem.isSelected!, []);
+      return new Leaf(treeItem.id, treeItem.name, treeItem.isSelected!);
     });
   }
 

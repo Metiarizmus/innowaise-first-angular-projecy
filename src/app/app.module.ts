@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 
 import { TreeComponent } from './components/tree/tree.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ColorDirective } from './directives/color.directive';
+import {SearchDirective} from './directives/search.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TreeComponent,
-    ColorDirective,
+    SearchDirective,
   ],
   imports: [
     BrowserModule,

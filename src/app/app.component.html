@@ -1,12 +1,10 @@
-<!--<div class="wrapper">-->
-<!--  <app-tree [tree]="items" class="first"></app-tree>-->
-<!--  <app-tree [tree]="items" class="second"></app-tree>-->
-<!--</div>-->
 
 <div class="wrapper">
 
   <div class="header">
-    <input type="text" class="header__search" (keyup)="onKey($event)">
+    <form [formGroup]="myform">
+    <input type="text" class="header__search" formControlName="searchInput">
+    </form>
   </div>
 
   <div class="main">
