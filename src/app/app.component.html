@@ -1,6 +1,4 @@
-
-<div class="wrapper">
-  <app-tree [tree]="items" class="first"></app-tree>
-  <app-tree [tree]="items" class="second"></app-tree>
-</div>
+<form [formGroup]="myform">
+  <app-tree [tree]="items" formControlName="mychecbox"></app-tree>
+</form>
 
