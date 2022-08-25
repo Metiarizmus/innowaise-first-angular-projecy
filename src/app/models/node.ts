@@ -11,11 +11,10 @@ export abstract class Node implements TreeItemInterface {
 
   static listSelectedItems: string[] = [];
 
-  constructor(id: string, name: string, isSelected: boolean, children: Node[]) {
+  constructor(id: string, name: string, isSelected: boolean) {
     this.id = id;
     this.isSelected = isSelected;
     this.name = name;
-    this.children = children;
   }
 
   public setParent(parent: Node | null) {
@@ -33,7 +32,7 @@ export abstract class Node implements TreeItemInterface {
 
   addSelectedItemsToList(isSelected: boolean, id: string): void {
     if (isSelected) {
-      Node.listSelectedItems.push(id);
+      Node.listSelectedItems = [...Node.listSelectedItems, id];
     } else {
       Node.listSelectedItems = Node.listSelectedItems.filter(x => x !== id);
     }

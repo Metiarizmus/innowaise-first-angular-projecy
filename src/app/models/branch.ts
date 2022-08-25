@@ -5,7 +5,7 @@ export class Branch extends Node {
   list: Node[] = [];
 
   constructor(id: string, name: string, isSelected: boolean, children: Node[]) {
-    super(id, name, isSelected, []);
+    super(id, name, isSelected);
     children.forEach(child => {
       this.add(child);
     })
@@ -18,7 +18,6 @@ export class Branch extends Node {
 
   override checkChildrenSelected(): void {
     const isSelected = this.children.every((child: Node) => child.isSelected);
-    console.log(isSelected + " " + this.id)
     if (this.isSelected === isSelected) {
       return;
     }
@@ -34,7 +33,6 @@ export class Branch extends Node {
     this.addSelectedItemsToList(isSelected, this.id);
     this.children.forEach((child) => {
       child.setSelectedState(isSelected)
-      this.addSelectedItemsToList(isSelected, child.id);
     });
   }
 

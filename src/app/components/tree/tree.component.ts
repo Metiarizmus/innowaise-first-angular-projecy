@@ -32,8 +32,6 @@ export class TreeComponent implements ControlValueAccessor {
 
   select(item: Node): void {
     item.operation(!item.isSelected)
-    this.onChange2(new Set<string>(Node.listSelectedItems))
+    this.onChange2(Node.listSelectedItems)
   }
-
-
 }

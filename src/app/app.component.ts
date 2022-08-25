@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {TreeItemInterface} from "./models/tree-item.interface";
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TreeItems} from "./constants/tree-items";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {NodeBuilder} from "./services/node-builder.service";
 import {Node} from "./models/node";
+import {Subscription} from "rxjs";
+import {FormInterface} from "./models/form.interface";
 
 @Component({
   selector: 'app-root',
@@ -11,24 +12,28 @@ import {Node} from "./models/node";
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
-  items: Node[] = this.nodeBuilder.convertItemToNode(TreeItems);
-  myform!: FormGroup;
+export class AppComponent implements OnInit, OnDestroy {
+  items!: Node[];
 
-  constructor(private formBuilder: FormBuilder,
-              private nodeBuilder: NodeBuilder) {
+  myform = new FormGroup<FormInterface>({
+    mychecbox: new FormControl<any>(false)
+  })
+
+  subscr!: Subscription;
+
+  constructor(private nodeBuilder: NodeBuilder) {
   }
 
   ngOnInit(): void {
-    this.myform = this.formBuilder.group({
-      mychecbox: ''
-    })
 
-    this.myform.valueChanges.subscribe(({mychecbox}) => {
+    this.items = this.nodeBuilder.convertItemToNode(TreeItems);
+
+    this.subscr = this.myform.valueChanges.subscribe(({mychecbox}) => {
       console.log(mychecbox)
     })
-
-
   }
 
+  ngOnDestroy(): void {
+    this.subscr.unsubscribe();
+  }
 }
