@@ -2,12 +2,16 @@
 .wrapper {
   width: 30rem;
   margin: 0 auto;
+  font-size: 1.5rem;
 
   .item {
 
     &__name {
       border: 1px solid black;
       text-align: center;
+      input {
+        float: left;
+      }
     }
 
     position: relative;
@@ -17,9 +21,9 @@
     }
   }
 
-  :host-context(.first){
-    .item{
-      &__name{
+  :host-context(.first) {
+    .item {
+      &__name {
         background-color: gray;
         font-style: italic;
       }
