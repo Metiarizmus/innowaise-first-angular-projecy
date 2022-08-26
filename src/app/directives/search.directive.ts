@@ -1,43 +1,40 @@
 import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
+import {Colors} from "../constants/colors";
 
 @Directive({
-  selector: '[search]',
-  exportAs: 'search'
+   selector: '[search]',
+   exportAs: 'search'
 })
 export class SearchDirective {
 
-  @Input() set search(searchText: string) {
-    this.searchText = searchText;
-  }
-
-  @Input("itemId") id: string = "";
-
-  searchText!: string;
-  listDisabledItems: string[] = [];
-
-  constructor(private elRef: ElementRef) {
-  }
-
-  checkSelected(): boolean {
-    return !!(this.listDisabledItems.includes(this.id) && this.listDisabledItems.length);
-  }
-
-  @HostBinding("style.backgroundColor") get backgroundColor() {
-    if (this.searchText) {
-      const itemText = this.elRef.nativeElement.innerText;
-      if (itemText.includes(this.searchText) && this.searchText != "") {
-        this.listDisabledItems.pop()
-        return "lawngreen";
+   @Input() set search(text: string) {
+      if (text) {
+         this.changeColor(text);
       } else {
-        this.listDisabledItems = [this.listDisabledItems, this.elRef.nativeElement.getAttribute('data-value')];
-        return "gray";
+         this.backgroundColor = Colors.WHITE;
+         this.isDisabled = false;
       }
-    }
-    if (this.searchText === "") {
-      this.listDisabledItems = [];
-      return "white";
-    }
-    return "white";
-  }
+   }
+
+   @HostBinding("style.backgroundColor") get color() {
+      return this.backgroundColor;
+   }
+
+   isDisabled: boolean = false;
+   backgroundColor: Colors = Colors.WHITE;
+
+   constructor(private elRef: ElementRef) {
+   }
+
+   changeColor(searchText: string): void {
+      const itemText = this.elRef.nativeElement.innerText;
+      if (itemText.includes(searchText)) {
+         this.isDisabled = false;
+         this.backgroundColor = Colors.LAW_GREEN;
+      } else {
+         this.isDisabled = true;
+         this.backgroundColor = Colors.GRAY;
+      }
+   }
 
 }

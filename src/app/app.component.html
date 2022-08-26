@@ -1,19 +1,25 @@
-
 <div class="wrapper">
 
-  <div class="header">
-    <form [formGroup]="myform">
-    <input type="text" class="header__search" formControlName="searchInput">
-    </form>
-  </div>
+    <div class="header">
+        <form [formGroup]="treeForm">
+            <input type="text"
+                   class="header__search"
+                   formControlName="searchInput"
+            >
+        </form>
+    </div>
 
-  <div class="main">
-    <main class="main__content">
-      <form [formGroup]="myform">
-        <app-tree [tree]="items" formControlName="mychecbox" [inputValue]="inputValue"></app-tree>
-      </form>
-    </main>
-  </div>
+    <div class="main">
+        <main class="main__content">
+            <form [formGroup]="treeForm">
+                <app-tree [tree]="items"
+                          [inputValue]="treeForm.controls.searchInput.value"
+                          formControlName="mychecbox"
+                >
+                </app-tree>
+            </form>
+        </main>
+    </div>
 
 </div>
 
