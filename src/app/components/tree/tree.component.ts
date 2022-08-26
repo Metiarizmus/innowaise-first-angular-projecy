@@ -1,48 +1,47 @@
-import {AfterViewChecked, ChangeDetectorRef, Component, DoCheck, forwardRef, Input} from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+
+import {selectNodeItems} from "../../utils/select-node-items";
 import {Node} from "../../shared/models/node";
-
 @Component({
-  selector: 'app-tree',
-  templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => TreeComponent),
-    multi: true,
-  }],
+   selector: 'app-tree',
+   templateUrl: './tree.component.html',
+   styleUrls: ['./tree.component.scss'],
+   providers: [{
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TreeComponent),
+      multi: true,
+   }],
 })
-export class TreeComponent implements ControlValueAccessor, AfterViewChecked {
+export class TreeComponent implements ControlValueAccessor {
 
-  @Input() tree: Node[] = [];
-  @Input() inputValue!: string;
-  isDisabled: boolean = false;
+   @Input() tree: Node[] = [];
+   @Input() inputValue!: string;
 
-  onChange2!: Function;
-  onTouch!: Function;
+   onChange = (value: string[]) => {
+   };
+   onTouched = () => {
+   };
 
-  constructor(private cdRef: ChangeDetectorRef) {
-  }
+   writeValue(defaultSelected: string[]) {
+      selectNodeItems(this.tree, this.convertToObject(defaultSelected))
+   }
 
+   registerOnChange(fn: any): void {
+      this.onChange = fn;
+   }
 
-  ngAfterViewChecked() {
-    this.cdRef.detectChanges();
-  }
+   registerOnTouched(fn: any): void {
+   }
 
-  writeValue() {
-  }
+   select(item: Node): void {
+      item.operation(!item.isSelected)
+      this.onChange(Node.listSelectedItems)
+   }
 
-  registerOnChange(fn: Function): void {
-    this.onChange2 = fn;
-  }
-
-  registerOnTouched(fn: Function): void {
-    this.onTouch = fn;
-  }
-
-  select(item: Node): void {
-    item.operation(!item.isSelected)
-    this.onChange2(Node.listSelectedItems)
-  }
-
+   convertToObject(arr: string[]): any {
+      return (arr.reduce((acc, val) => ({
+         ...acc, [val]: 'true'
+      }), {}));
+   }
 }

@@ -2,16 +2,18 @@ import {Node} from "./node";
 
 export class Leaf extends Node {
 
-  override setSelectedState(isSelected: boolean) {
-    this.isSelected = isSelected;
-    this.addSelectedItemsToList(isSelected, this.id)
-  }
+   override setSelectedState(isSelected: boolean) {
+      this.isSelected = isSelected;
+      this.addSelectedItemsToList(isSelected, this.id)
+   }
 
-  operation(isSelected: boolean): void {
-    this.setSelectedState(isSelected);
-
-    if (this.parent) {
-      this.parent.checkChildrenSelected();
-    }
-  }
+   operation(isSelected: boolean, defaultListSelected?: string[]): void {
+      if (defaultListSelected?.includes(this.id)) {
+         isSelected = true;
+      }
+      this.setSelectedState(isSelected);
+      if (this.parent) {
+         this.parent.checkChildrenSelected();
+      }
+   }
 }

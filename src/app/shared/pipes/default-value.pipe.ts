@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DefaultValuePipe implements PipeTransform {
 
-  transform(value: string, ...args: unknown[]): string {
-    if (value === "") {
-      return "default";
+  transform(value: string, defaultValue: string): string {
+    if (!value) {
+      return defaultValue;
     }
     return value;
   }

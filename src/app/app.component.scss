@@ -7,9 +7,9 @@
     height: 4rem;
     position: relative;
 
-    .header__search {
+    &__search {
       position: absolute;
-      top:15%;
+      top: 15%;
       left: 5%;
 
       padding: 0.313rem;
@@ -32,6 +32,4 @@
   .main {
     margin-top: 5rem;
   }
-
-
 }

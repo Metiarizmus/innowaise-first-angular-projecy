@@ -3,17 +3,16 @@
     <li *ngFor="let item of items" class="item">
       <div class="item__name"
            [search]="inputValue"
-           [itemId]="item.id"
-           [attr.data-value]="item.id"
            #search='search'
+           [attr.data-value]="item.id"
       >
         <input
           type="checkbox"
           [checked]="item.isSelected"
           (change)="select(item)"
-          [disabled]="search.checkSelected()"
+          [disabled]="search.isDisabled"
         >
-        {{item.name | defaultValue}}
+        {{item.name | defaultValue:'def'}}
       </div>
       <ul *ngIf="item.children.length" class="child">
         <ng-container *ngTemplateOutlet="reverseItems; context: {$implicit: item.children}"></ng-container>

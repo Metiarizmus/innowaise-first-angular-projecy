@@ -1,47 +1,43 @@
-import {AfterContentChecked, Component, OnDestroy, OnInit} from '@angular/core';
-import {TreeItems} from "./shared/constants/tree-items";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {NodeBuilder} from "./services/node-builder.service";
-import {Node} from "./shared/models/node";
+import {Component, OnDestroy, OnInit} from "@angular/core";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Subscription} from "rxjs";
+import {NodeBuilder} from "./services/node-builder.service";
+import {TreeItems} from "./shared/constants/tree-items";
+import {FormGroupInterface} from "./shared/models/form-group.interface";
+import {Node} from "./shared/models/node";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+   selector: 'app-root',
+   templateUrl: './app.component.html',
+   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit, OnDestroy, AfterContentChecked {
-  items!: Node[];
-  myform!: FormGroup;
+export class AppComponent implements OnInit, OnDestroy {
+   items!: Node[];
+   treeForm!: FormGroup;
 
-  inputValue!: string;
+   subscr = new Subscription();
 
-  subscr = new Subscription();
+   constructor(private formBuilder: FormBuilder,
+               private nodeBuilder: NodeBuilder) {
+   }
 
-  constructor(private fb: FormBuilder,
-              private cs: NodeBuilder) {
-  }
+   ngOnInit(): void {
+      // @ts-ignore
+      this.items = this.nodeBuilder.convertItemToNode(TreeItems);
 
-  ngOnInit(): void {
-    this.items = this.cs.convertItemToNode(TreeItems);
+      this.treeForm = this.formBuilder.group<FormGroupInterface>({
+         mychecbox: new FormControl(['1','10','8','2']),
+         searchInput: new FormControl()
+      })
 
-    this.myform = this.fb.group({
-      mychecbox: '',
-      searchInput: ''
-    })
+      this.subscr = this.treeForm.valueChanges.subscribe(({mychecbox}) => {
+         console.log(mychecbox)
+      })
 
-    this.subscr = this.myform.valueChanges.subscribe(({mychecbox}) => {
-      console.log(mychecbox)
-    })
-  }
+   }
 
-  ngAfterContentChecked(): void {
-    this.inputValue = this.myform.get('searchInput')?.value
-  }
-
-  ngOnDestroy(): void {
-    this.subscr.unsubscribe();
-  }
-
+   ngOnDestroy(): void {
+      this.subscr.unsubscribe();
+   }
 }
